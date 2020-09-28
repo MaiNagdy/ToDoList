@@ -14,16 +14,17 @@
                         </div>
                     @endif
                     
-                   <div class="container">
-                   <form action="{{route('update',['id'=>$task->id])}}" method="post" >
-                       @csrf
-                       <div class="form-group">
-                           <input type="text" name="task" class="form-control" value="{{$task->task}}" >
+                       <div class="container">
+                           <form action="{{route('update',['id'=>$task->id])}}" method="post" >
+                               @csrf
+                               <div class="form-group">
+                                   <input type="text" name="task" class="form-control" value="{{$task->task}}" >
+                               </div>
+                               <div class="form-group">
+                                   <input type="submit" name="Add" class="btn btn-primary btn-block" >
+                               </div>
+                           </form>
                        </div>
-                       <div class="form-group">
-                           <input type="submit" name="Add" class="btn btn-primary btn-block" >
-                    </div>
-                   </form>
                 </div>
                 
             </div>
