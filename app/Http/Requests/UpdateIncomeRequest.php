@@ -29,6 +29,9 @@ class UpdateIncomeRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'amount' => [
+                'required',
+            ],
         ];
     }
 }

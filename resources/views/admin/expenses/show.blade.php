@@ -41,18 +41,42 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.expense.fields.amount') }}
-                        </th>
-                        <td>
-                            {{ $expense->amount }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.expense.fields.description') }}
                         </th>
                         <td>
                             {{ $expense->description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.expense.fields.employee_name') }}
+                        </th>
+                        <td>
+                            {{ $expense->employee_name->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.expense.fields.salary') }}
+                        </th>
+                        <td>
+                            {{ $expense->salary->salary ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.expense.fields.salary_commission') }}
+                        </th>
+                        <td>
+                            {{ $expense->salary_commission->commission ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.expense.fields.amount') }}
+                        </th>
+                        <td>
+                            {{ $expense->amount }}
                         </td>
                     </tr>
                 </tbody>

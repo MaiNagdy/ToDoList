@@ -19,7 +19,7 @@ class IncomeController extends Controller
     {
         abort_if(Gate::denies('income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $incomes = Income::with(['income_category', 'client'])->get();
+        $incomes = Income::with(['income_category', 'client_name', 'client'])->get();
 
         return view('admin.incomes.index', compact('incomes'));
     }
@@ -30,9 +30,11 @@ class IncomeController extends Controller
 
         $income_categories = IncomeCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $client_names = Client::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $clients = Client::pluck('amount_paid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.incomes.create', compact('clients', 'income_categories'));
+        return view('admin.incomes.create', compact('client_names', 'clients', 'income_categories'));
     }
 
     public function store(StoreIncomeRequest $request)
@@ -48,11 +50,13 @@ class IncomeController extends Controller
 
         $income_categories = IncomeCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $client_names = Client::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $clients = Client::pluck('amount_paid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $income->load('income_category', 'client');
+        $income->load('income_category', 'client_name', 'client');
 
-        return view('admin.incomes.edit', compact('clients', 'income', 'income_categories'));
+        return view('admin.incomes.edit', compact('client_names', 'clients', 'income', 'income_categories'));
     }
 
     public function update(UpdateIncomeRequest $request, Income $income)
@@ -66,7 +70,7 @@ class IncomeController extends Controller
     {
         abort_if(Gate::denies('income_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $income->load('income_category', 'client');
+        $income->load('income_category', 'client_name', 'client');
 
         return view('admin.incomes.show', compact('income'));
     }

@@ -249,6 +249,21 @@
                 {{ trans('cruds.reservation.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#salary_expenses" role="tab" data-toggle="tab">
+                {{ trans('cruds.expense.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#salary_commission_expenses" role="tab" data-toggle="tab">
+                {{ trans('cruds.expense.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#employee_name_expenses" role="tab" data-toggle="tab">
+                {{ trans('cruds.expense.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="employee_appointments">
@@ -256,6 +271,15 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="employee_reservations">
             @includeIf('admin.employees.relationships.employeeReservations', ['reservations' => $employee->employeeReservations])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="salary_expenses">
+            @includeIf('admin.employees.relationships.salaryExpenses', ['expenses' => $employee->salaryExpenses])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="salary_commission_expenses">
+            @includeIf('admin.employees.relationships.salaryCommissionExpenses', ['expenses' => $employee->salaryCommissionExpenses])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="employee_name_expenses">
+            @includeIf('admin.employees.relationships.employeeNameExpenses', ['expenses' => $employee->employeeNameExpenses])
         </div>
     </div>
 </div>

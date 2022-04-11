@@ -63,7 +63,7 @@
             </li>
         @endcan
         @can('expense_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/expense-categories*") ? "c-show" : "" }} {{ request()->is("admin/income-categories*") ? "c-show" : "" }} {{ request()->is("admin/expenses*") ? "c-show" : "" }} {{ request()->is("admin/incomes*") ? "c-show" : "" }} {{ request()->is("admin/expense-reports*") ? "c-show" : "" }} {{ request()->is("admin/assets*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/expense-categories*") ? "c-show" : "" }} {{ request()->is("admin/income-categories*") ? "c-show" : "" }} {{ request()->is("admin/expenses*") ? "c-show" : "" }} {{ request()->is("admin/incomes*") ? "c-show" : "" }} {{ request()->is("admin/assets*") ? "c-show" : "" }} {{ request()->is("admin/expense-reports*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-money-bill c-sidebar-nav-icon">
 
@@ -111,16 +111,6 @@
                             </a>
                         </li>
                     @endcan
-                    @can('expense_report_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expense-reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expense-reports") || request()->is("admin/expense-reports/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-chart-line c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.expenseReport.title') }}
-                            </a>
-                        </li>
-                    @endcan
                     @can('asset_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.assets.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/assets") || request()->is("admin/assets/*") ? "c-active" : "" }}">
@@ -128,6 +118,16 @@
 
                                 </i>
                                 {{ trans('cruds.asset.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('expense_report_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expense-reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expense-reports") || request()->is("admin/expense-reports/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-chart-line c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.expenseReport.title') }}
                             </a>
                         </li>
                     @endcan

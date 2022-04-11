@@ -22,7 +22,8 @@ class Asset extends Model
 
     protected $fillable = [
         'name',
-        'price',
+        'description',
+        'money',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -18,15 +18,15 @@ class StoreExpenseRequest extends FormRequest
     {
         return [
             'entry_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
-            ],
-            'amount' => [
-                'required',
+                'nullable',
             ],
             'description' => [
                 'string',
                 'nullable',
+            ],
+            'amount' => [
+                'required',
             ],
         ];
     }

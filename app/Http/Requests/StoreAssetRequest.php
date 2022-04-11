@@ -19,9 +19,13 @@ class StoreAssetRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'required',
+                'nullable',
             ],
-            'price' => [
+            'description' => [
+                'string',
+                'nullable',
+            ],
+            'money' => [
                 'required',
             ],
         ];

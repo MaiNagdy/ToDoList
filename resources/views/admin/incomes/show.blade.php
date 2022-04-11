@@ -49,10 +49,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.income.fields.client_name') }}
+                        </th>
+                        <td>
+                            {{ $income->client_name->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.income.fields.client') }}
                         </th>
                         <td>
                             {{ $income->client->amount_paid ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.income.fields.amount') }}
+                        </th>
+                        <td>
+                            {{ $income->amount }}
                         </td>
                     </tr>
                 </tbody>

@@ -33,10 +33,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.asset.fields.price') }}
+                            {{ trans('cruds.asset.fields.description') }}
                         </th>
                         <td>
-                            {{ $asset->price }}
+                            {{ $asset->description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.asset.fields.money') }}
+                        </th>
+                        <td>
+                            {{ $asset->money }}
                         </td>
                     </tr>
                 </tbody>
