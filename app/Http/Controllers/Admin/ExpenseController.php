@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyExpenseRequest;
 use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Requests\UpdateExpenseRequest;
+use App\Models\Employee;
 use App\Models\Expense;
 use App\Models\ExpenseCategory;
 use Gate;
@@ -18,7 +19,7 @@ class ExpenseController extends Controller
     {
         abort_if(Gate::denies('expense_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $expenses = Expense::with(['expense_category'])->get();
+        $expenses = Expense::with(['expense_category', 'employee_name', 'salary', 'salary_commission'])->get();
 
         return view('admin.expenses.index', compact('expenses'));
     }
@@ -29,7 +30,13 @@ class ExpenseController extends Controller
 
         $expense_categories = ExpenseCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.expenses.create', compact('expense_categories'));
+        $employee_names = Employee::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $salaries = Employee::pluck('salary', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $salary_commissions = Employee::pluck('commission', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.expenses.create', compact('employee_names', 'expense_categories', 'salaries', 'salary_commissions'));
     }
 
     public function store(StoreExpenseRequest $request)
@@ -45,9 +52,15 @@ class ExpenseController extends Controller
 
         $expense_categories = ExpenseCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $expense->load('expense_category');
+        $employee_names = Employee::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.expenses.edit', compact('expense', 'expense_categories'));
+        $salaries = Employee::pluck('salary', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $salary_commissions = Employee::pluck('commission', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $expense->load('expense_category', 'employee_name', 'salary', 'salary_commission');
+
+        return view('admin.expenses.edit', compact('employee_names', 'expense', 'expense_categories', 'salaries', 'salary_commissions'));
     }
 
     public function update(UpdateExpenseRequest $request, Expense $expense)
@@ -61,7 +74,7 @@ class ExpenseController extends Controller
     {
         abort_if(Gate::denies('expense_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $expense->load('expense_category');
+        $expense->load('expense_category', 'employee_name', 'salary', 'salary_commission');
 
         return view('admin.expenses.show', compact('expense'));
     }

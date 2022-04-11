@@ -6,13 +6,13 @@
 
             <div class="card">
                 <div class="card-header">
-                    {{ trans('global.show') }} {{ trans('cruds.income.title') }}
+                    {{ trans('global.show') }} {{ trans('cruds.expense.title') }}
                 </div>
 
                 <div class="card-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.incomes.index') }}">
+                            <a class="btn btn-default" href="{{ route('frontend.expenses.index') }}">
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>
@@ -20,64 +20,72 @@
                             <tbody>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.id') }}
+                                        {{ trans('cruds.expense.fields.id') }}
                                     </th>
                                     <td>
-                                        {{ $income->id }}
+                                        {{ $expense->id }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.income_category') }}
+                                        {{ trans('cruds.expense.fields.expense_category') }}
                                     </th>
                                     <td>
-                                        {{ $income->income_category->name ?? '' }}
+                                        {{ $expense->expense_category->name ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.entry_date') }}
+                                        {{ trans('cruds.expense.fields.entry_date') }}
                                     </th>
                                     <td>
-                                        {{ $income->entry_date }}
+                                        {{ $expense->entry_date }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.description') }}
+                                        {{ trans('cruds.expense.fields.description') }}
                                     </th>
                                     <td>
-                                        {{ $income->description }}
+                                        {{ $expense->description }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.client_name') }}
+                                        {{ trans('cruds.expense.fields.employee_name') }}
                                     </th>
                                     <td>
-                                        {{ $income->client_name->name ?? '' }}
+                                        {{ $expense->employee_name->name ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.client') }}
+                                        {{ trans('cruds.expense.fields.salary') }}
                                     </th>
                                     <td>
-                                        {{ $income->client->amount_paid ?? '' }}
+                                        {{ $expense->salary->salary ?? '' }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.income.fields.amount') }}
+                                        {{ trans('cruds.expense.fields.salary_commission') }}
                                     </th>
                                     <td>
-                                        {{ $income->amount }}
+                                        {{ $expense->salary_commission->commission ?? '' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.expense.fields.amount') }}
+                                    </th>
+                                    <td>
+                                        {{ $expense->amount }}
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.incomes.index') }}">
+                            <a class="btn btn-default" href="{{ route('frontend.expenses.index') }}">
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>

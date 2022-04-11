@@ -71,6 +71,11 @@ class Client extends Model
         return $this->hasMany(Income::class, 'client_id', 'id');
     }
 
+    public function clientNameIncomes()
+    {
+        return $this->hasMany(Income::class, 'client_name_id', 'id');
+    }
+
     public function getWrittenAtAttribute($value)
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;

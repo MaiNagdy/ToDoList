@@ -3,36 +3,30 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            @can('asset_create')
+            @can('expense_category_create')
                 <div style="margin-bottom: 10px;" class="row">
                     <div class="col-lg-12">
-                        <a class="btn btn-success" href="{{ route('frontend.assets.create') }}">
-                            {{ trans('global.add') }} {{ trans('cruds.asset.title_singular') }}
+                        <a class="btn btn-success" href="{{ route('frontend.expense-categories.create') }}">
+                            {{ trans('global.add') }} {{ trans('cruds.expenseCategory.title_singular') }}
                         </a>
                     </div>
                 </div>
             @endcan
             <div class="card">
                 <div class="card-header">
-                    {{ trans('cruds.asset.title_singular') }} {{ trans('global.list') }}
+                    {{ trans('cruds.expenseCategory.title_singular') }} {{ trans('global.list') }}
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class=" table table-bordered table-striped table-hover datatable datatable-Asset">
+                        <table class=" table table-bordered table-striped table-hover datatable datatable-ExpenseCategory">
                             <thead>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.asset.fields.id') }}
+                                        {{ trans('cruds.expenseCategory.fields.id') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.asset.fields.name') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.asset.fields.description') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.asset.fields.money') }}
+                                        {{ trans('cruds.expenseCategory.fields.name') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -40,35 +34,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($assets as $key => $asset)
-                                    <tr data-entry-id="{{ $asset->id }}">
+                                @foreach($expenseCategories as $key => $expenseCategory)
+                                    <tr data-entry-id="{{ $expenseCategory->id }}">
                                         <td>
-                                            {{ $asset->id ?? '' }}
+                                            {{ $expenseCategory->id ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $asset->name ?? '' }}
+                                            {{ $expenseCategory->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $asset->description ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $asset->money ?? '' }}
-                                        </td>
-                                        <td>
-                                            @can('asset_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.assets.show', $asset->id) }}">
+                                            @can('expense_category_show')
+                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.expense-categories.show', $expenseCategory->id) }}">
                                                     {{ trans('global.view') }}
                                                 </a>
                                             @endcan
 
-                                            @can('asset_edit')
-                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.assets.edit', $asset->id) }}">
+                                            @can('expense_category_edit')
+                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.expense-categories.edit', $expenseCategory->id) }}">
                                                     {{ trans('global.edit') }}
                                                 </a>
                                             @endcan
 
-                                            @can('asset_delete')
-                                                <form action="{{ route('frontend.assets.destroy', $asset->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                            @can('expense_category_delete')
+                                                <form action="{{ route('frontend.expense-categories.destroy', $expenseCategory->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -94,11 +82,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('asset_delete')
+@can('expense_category_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('frontend.assets.massDestroy') }}",
+    url: "{{ route('frontend.expense-categories.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -129,7 +117,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Asset:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-ExpenseCategory:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

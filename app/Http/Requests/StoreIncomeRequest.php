@@ -29,6 +29,9 @@ class StoreIncomeRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'amount' => [
+                'required',
+            ],
         ];
     }
 }

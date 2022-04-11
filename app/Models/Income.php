@@ -26,7 +26,9 @@ class Income extends Model
         'income_category_id',
         'entry_date',
         'description',
+        'client_name_id',
         'client_id',
+        'amount',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -45,6 +47,11 @@ class Income extends Model
     public function setEntryDateAttribute($value)
     {
         $this->attributes['entry_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function client_name()
+    {
+        return $this->belongsTo(Client::class, 'client_name_id');
     }
 
     public function client()

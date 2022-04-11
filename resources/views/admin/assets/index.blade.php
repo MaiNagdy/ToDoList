@@ -29,7 +29,10 @@
                             {{ trans('cruds.asset.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.asset.fields.price') }}
+                            {{ trans('cruds.asset.fields.description') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.asset.fields.money') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,7 +52,10 @@
                                 {{ $asset->name ?? '' }}
                             </td>
                             <td>
-                                {{ $asset->price ?? '' }}
+                                {{ $asset->description ?? '' }}
+                            </td>
+                            <td>
+                                {{ $asset->money ?? '' }}
                             </td>
                             <td>
                                 @can('asset_show')

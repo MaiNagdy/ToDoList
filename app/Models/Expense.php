@@ -25,8 +25,11 @@ class Expense extends Model
     protected $fillable = [
         'expense_category_id',
         'entry_date',
-        'amount',
         'description',
+        'employee_name_id',
+        'salary_id',
+        'salary_commission_id',
+        'amount',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -45,6 +48,21 @@ class Expense extends Model
     public function setEntryDateAttribute($value)
     {
         $this->attributes['entry_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function employee_name()
+    {
+        return $this->belongsTo(Employee::class, 'employee_name_id');
+    }
+
+    public function salary()
+    {
+        return $this->belongsTo(Employee::class, 'salary_id');
+    }
+
+    public function salary_commission()
+    {
+        return $this->belongsTo(Employee::class, 'salary_commission_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

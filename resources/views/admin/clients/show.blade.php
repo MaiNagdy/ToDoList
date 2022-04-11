@@ -161,6 +161,11 @@
                 {{ trans('cruds.income.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#client_name_incomes" role="tab" data-toggle="tab">
+                {{ trans('cruds.income.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="client_reservations">
@@ -168,6 +173,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="client_incomes">
             @includeIf('admin.clients.relationships.clientIncomes', ['incomes' => $client->clientIncomes])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="client_name_incomes">
+            @includeIf('admin.clients.relationships.clientNameIncomes', ['incomes' => $client->clientNameIncomes])
         </div>
     </div>
 </div>

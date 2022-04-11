@@ -61,6 +61,21 @@ class Employee extends Model
         return $this->hasMany(Reservation::class, 'employee_id', 'id');
     }
 
+    public function salaryExpenses()
+    {
+        return $this->hasMany(Expense::class, 'salary_id', 'id');
+    }
+
+    public function salaryCommissionExpenses()
+    {
+        return $this->hasMany(Expense::class, 'salary_commission_id', 'id');
+    }
+
+    public function employeeNameExpenses()
+    {
+        return $this->hasMany(Expense::class, 'employee_name_id', 'id');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

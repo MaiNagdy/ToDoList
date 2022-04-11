@@ -6,13 +6,13 @@
 
             <div class="card">
                 <div class="card-header">
-                    {{ trans('global.show') }} {{ trans('cruds.asset.title') }}
+                    {{ trans('global.show') }} {{ trans('cruds.expenseCategory.title') }}
                 </div>
 
                 <div class="card-body">
                     <div class="form-group">
                         <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.assets.index') }}">
+                            <a class="btn btn-default" href="{{ route('frontend.expense-categories.index') }}">
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>
@@ -20,40 +20,24 @@
                             <tbody>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.asset.fields.id') }}
+                                        {{ trans('cruds.expenseCategory.fields.id') }}
                                     </th>
                                     <td>
-                                        {{ $asset->id }}
+                                        {{ $expenseCategory->id }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.asset.fields.name') }}
+                                        {{ trans('cruds.expenseCategory.fields.name') }}
                                     </th>
                                     <td>
-                                        {{ $asset->name }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.asset.fields.description') }}
-                                    </th>
-                                    <td>
-                                        {{ $asset->description }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.asset.fields.money') }}
-                                    </th>
-                                    <td>
-                                        {{ $asset->money }}
+                                        {{ $expenseCategory->name }}
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
-                            <a class="btn btn-default" href="{{ route('frontend.assets.index') }}">
+                            <a class="btn btn-default" href="{{ route('frontend.expense-categories.index') }}">
                                 {{ trans('global.back_to_list') }}
                             </a>
                         </div>

@@ -10,8 +10,9 @@ class CreateAssetsTable extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->decimal('price', 15, 2);
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->decimal('money', 15, 2);
             $table->timestamps();
             $table->softDeletes();
         });

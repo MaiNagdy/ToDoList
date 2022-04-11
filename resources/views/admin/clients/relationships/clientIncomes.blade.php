@@ -34,10 +34,16 @@
                             {{ trans('cruds.income.fields.description') }}
                         </th>
                         <th>
+                            {{ trans('cruds.income.fields.client_name') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.income.fields.client') }}
                         </th>
                         <th>
                             {{ trans('cruds.client.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.income.fields.amount') }}
                         </th>
                         <th>
                             &nbsp;
@@ -63,10 +69,16 @@
                                 {{ $income->description ?? '' }}
                             </td>
                             <td>
+                                {{ $income->client_name->name ?? '' }}
+                            </td>
+                            <td>
                                 {{ $income->client->amount_paid ?? '' }}
                             </td>
                             <td>
                                 {{ $income->client->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $income->amount ?? '' }}
                             </td>
                             <td>
                                 @can('income_show')

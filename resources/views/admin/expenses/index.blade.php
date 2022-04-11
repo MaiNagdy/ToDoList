@@ -32,10 +32,25 @@
                             {{ trans('cruds.expense.fields.entry_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.expense.fields.amount') }}
+                            {{ trans('cruds.expense.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.expense.fields.description') }}
+                            {{ trans('cruds.expense.fields.employee_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.expense.fields.salary') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.employee.fields.commission') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.expense.fields.salary_commission') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.employee.fields.name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.expense.fields.amount') }}
                         </th>
                         <th>
                             &nbsp;
@@ -58,10 +73,25 @@
                                 {{ $expense->entry_date ?? '' }}
                             </td>
                             <td>
-                                {{ $expense->amount ?? '' }}
+                                {{ $expense->description ?? '' }}
                             </td>
                             <td>
-                                {{ $expense->description ?? '' }}
+                                {{ $expense->employee_name->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->salary->salary ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->salary->commission ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->salary_commission->commission ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->salary_commission->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->amount ?? '' }}
                             </td>
                             <td>
                                 @can('expense_show')

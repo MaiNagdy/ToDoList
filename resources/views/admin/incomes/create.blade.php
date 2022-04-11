@@ -44,6 +44,20 @@
                 <span class="help-block">{{ trans('cruds.income.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="client_name_id">{{ trans('cruds.income.fields.client_name') }}</label>
+                <select class="form-control select2 {{ $errors->has('client_name') ? 'is-invalid' : '' }}" name="client_name_id" id="client_name_id">
+                    @foreach($client_names as $id => $entry)
+                        <option value="{{ $id }}" {{ old('client_name_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('client_name'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('client_name') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.income.fields.client_name_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="client_id">{{ trans('cruds.income.fields.client') }}</label>
                 <select class="form-control select2 {{ $errors->has('client') ? 'is-invalid' : '' }}" name="client_id" id="client_id" required>
                     @foreach($clients as $id => $entry)
@@ -56,6 +70,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.income.fields.client_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="amount">{{ trans('cruds.income.fields.amount') }}</label>
+                <input class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}" type="number" name="amount" id="amount" value="{{ old('amount', '') }}" step="0.01" required>
+                @if($errors->has('amount'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('amount') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.income.fields.amount_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

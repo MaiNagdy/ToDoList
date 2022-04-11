@@ -54,6 +54,8 @@ class IncomeCategoryController extends Controller
     {
         abort_if(Gate::denies('income_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $incomeCategory->load('incomeCategoryIncomes');
+
         return view('frontend.incomeCategories.show', compact('incomeCategory'));
     }
 

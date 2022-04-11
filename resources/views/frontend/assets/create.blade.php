@@ -14,8 +14,8 @@
                         @method('POST')
                         @csrf
                         <div class="form-group">
-                            <label class="required" for="name">{{ trans('cruds.asset.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                            <label for="name">{{ trans('cruds.asset.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}">
                             @if($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('name') }}
@@ -24,14 +24,24 @@
                             <span class="help-block">{{ trans('cruds.asset.fields.name_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <label class="required" for="price">{{ trans('cruds.asset.fields.price') }}</label>
-                            <input class="form-control" type="number" name="price" id="price" value="{{ old('price', '') }}" step="0.01" required>
-                            @if($errors->has('price'))
+                            <label for="description">{{ trans('cruds.asset.fields.description') }}</label>
+                            <input class="form-control" type="text" name="description" id="description" value="{{ old('description', '') }}">
+                            @if($errors->has('description'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('price') }}
+                                    {{ $errors->first('description') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.asset.fields.price_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.asset.fields.description_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="money">{{ trans('cruds.asset.fields.money') }}</label>
+                            <input class="form-control" type="number" name="money" id="money" value="{{ old('money', '') }}" step="0.01" required>
+                            @if($errors->has('money'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('money') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.asset.fields.money_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">
